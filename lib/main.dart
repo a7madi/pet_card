@@ -48,7 +48,17 @@ class HomeScreen extends StatelessWidget {
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemBuilder: (ctx, i) => PetCard(i),
+            itemBuilder: (ctx, i) {
+              final petName = pets.petsList[i].name;
+              final petAge = pets.petsList[i].dob;
+              final imgUrl = pets.petsList[i].imgUrl;
+
+              return PetCard(
+                petName: petName,
+                petAge: petAge,
+                imgUrl: imgUrl,
+              );
+            },
             itemCount: pets.petsList.length,
           ),
         ),
